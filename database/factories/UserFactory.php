@@ -2,43 +2,112 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ * @extends Factory<User>
  */
 class UserFactory extends Factory
 {
     /**
-     * The current password being used by the factory.
+     * Cached password
      */
-    protected static ?string $password;
+    protected static ?string $password = null;
 
     /**
      * Define the model's default state.
-     *
-     * @return array<string, mixed>
      */
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
+            'name' => $this->faker->name(),
+
+            'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
+
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
+
+            // 👇 Library domain fields
+            'role' => $this->faker->randomElement([
+                'admin',
+                'librarian',
+                'member',
+            ]),
+
+            'status' => $this->faker->randomElement([
+                'active',
+                'suspended',
+            ]),
+
+            'phone' => $this->faker->phoneNumber(),
+            'address' => $this->faker->address(),
         ];
     }
 
     /**
-     * Indicate that the model's email address should be unverified.
+     * User with unverified email
      */
     public function unverified(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return $this->state(fn () => [
             'email_verified_at' => null,
+        ]);
+    }
+
+    /**
+     * State: active user
+     */
+    public function active(): static
+    {
+        return $this->state(fn () => [
+            'status' => 'active',
+        ]);
+    }
+
+    /**
+     * State: suspended user
+     */
+    public function suspended(): static
+    {
+        return $this->state(fn () => [
+            'status' => 'suspended',
+        ]);
+    }
+
+    /**
+     * State: admin user
+     */
+    public function admin(): static
+    {
+        return $this->state(fn () => [
+            'role' => 'admin',
+            'status' => 'active',
+        ]);
+    }
+
+    /**
+     * State: librarian user
+     */
+    public function librarian(): static
+    {
+        return $this->state(fn () => [
+            'role' => 'librarian',
+            'status' => 'active',
+        ]);
+    }
+
+    /**
+     * State: member user
+     */
+    public function member(): static
+    {
+        return $this->state(fn () => [
+            'role' => 'member',
+            'status' => 'active',
         ]);
     }
 }

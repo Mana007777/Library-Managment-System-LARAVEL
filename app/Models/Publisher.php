@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Publisher extends Model
 {
     use HasFactory;
-    protected $fillable = ['name','contact_email','phone','address'];
+    protected $fillable = ['username','email','phone','address'];
 
     public function books(): HasMany
     {
