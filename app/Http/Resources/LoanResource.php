@@ -16,7 +16,7 @@ class LoanResource extends JsonResource
             'returned_at' => $this->returned_at?->toISOString(),
             'status' => $this->status,
 
-            'user' => new UserResource($this->user),
+            'user' => new UserSlimResource($this->user),
             'book_copy' => new BookCopyResource($this->copy),
         ];
     }

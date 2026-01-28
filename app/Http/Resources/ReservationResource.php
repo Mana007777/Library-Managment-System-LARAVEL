@@ -15,8 +15,8 @@ class ReservationResource extends JsonResource
             'reserved_at' => $this->reserved_at?->toISOString(),
             'expires_at' => $this->expires_at?->toISOString(),
 
-            'user' => new UserResource($this->user),
-            'book' => new BookResource($this->book),
+            'user' => new UserSlimResource($this->user),
+            'book' => new BookSlimResource($this->book),
         ];
     }
 }

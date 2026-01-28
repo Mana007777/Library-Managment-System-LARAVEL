@@ -20,9 +20,6 @@ class UserResource extends JsonResource
 
             'created_at' => $this->created_at?->toISOString(),
 
-            'loans' => LoanResource::collection($this->loans),
-            'reservations' => ReservationResource::collection($this->reservations),
-            'reviews' => ReviewResource::collection($this->reviews),
         ];
     }
 }

@@ -16,7 +16,7 @@ class BookCopyResource extends JsonResource
             'condition' => $this->condition,
             'shelf_location' => $this->shelf_location,
 
-            'book' => new BookResource($this->book),
+            'book' => new BookSlimResource($this->book),
         ];
     }
 }

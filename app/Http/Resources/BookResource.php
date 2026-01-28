@@ -24,6 +24,7 @@ class BookResource extends JsonResource
             'authors' => AuthorResource::collection($this->authors),
             'categories' => CategoryResource::collection($this->categories),
 
+            // IMPORTANT: copies & reviews are allowed ONLY here
             'copies' => BookCopyResource::collection($this->copies),
             'reviews' => ReviewResource::collection($this->reviews),
         ];
