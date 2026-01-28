@@ -13,13 +13,13 @@ class BookFactory extends Factory
     public function definition(): array
     {
         return [
-            'isbn' => $this->faker->unique()->isbn13,
-            'title' => $this->faker->sentence(3),
-            'description' => $this->faker->paragraph,
+            'isbn' => fake()->unique()->isbn13(),
+            'title' => fake()->sentence(3),
+            'description' => fake()->paragraph(),
             'publisher_id' => Publisher::factory(),
-            'publication_year' => $this->faker->year,
+            'publication_year' => fake()->year(),
             'language' => 'EN',
-            'pages' => $this->faker->numberBetween(100, 800),
+            'pages' => fake()->numberBetween(100, 800),
             'cover_image' => null,
         ];
     }

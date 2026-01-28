@@ -17,7 +17,7 @@ class ReviewFactory extends Factory
             'user_id' => User::factory(),
             'book_id' => Book::factory(),
             'rating' => rand(1, 5),
-            'comment' => $this->faker->sentence,
+            'comment' => fake()->sentence(),
         ];
     }
 }

@@ -19,10 +19,10 @@ class PublisherFactory extends Factory
     public function definition(): array
     {
         return [
-            'username' => $this->faker->unique()->company,
-            'email' => $this->faker->companyEmail,
-            'phone' => $this->faker->phoneNumber,
-            'address' => $this->faker->address,
+            'username' => fake()->unique()->company(),
+            'email' => fake()->companyEmail(),
+            'phone' => fake()->phoneNumber(),
+            'address' => fake()->address(),
         ];
     }
 }

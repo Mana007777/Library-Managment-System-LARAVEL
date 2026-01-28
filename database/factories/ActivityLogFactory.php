@@ -17,7 +17,7 @@ class ActivityLogFactory extends Factory
             'action' => 'loan.created',
             'model' => 'Loan',
             'model_id' => rand(1, 100),
-            'meta' => ['ip' => $this->faker->ipv4],
+            'meta' => ['ip' => fake()->ipv4()],
         ];
     }
 }

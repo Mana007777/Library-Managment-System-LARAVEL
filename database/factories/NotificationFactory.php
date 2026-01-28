@@ -15,7 +15,7 @@ class NotificationFactory extends Factory
         return [
             'user_id' => User::factory(),
             'title' => 'Reminder',
-            'message' => $this->faker->sentence,
+            'message' => fake()->sentence(),
             'is_read' => false,
         ];
     }

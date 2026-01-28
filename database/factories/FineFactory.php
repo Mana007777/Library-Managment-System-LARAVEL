@@ -14,7 +14,7 @@ class FineFactory extends Factory
     {
         return [
             'loan_id' => Loan::factory(),
-            'amount' => $this->faker->randomFloat(2, 1, 50),
+            'amount' => fake()->randomFloat(2, 1, 50),
             'reason' => 'Late return',
             'paid' => false,
             'paid_at' => null,

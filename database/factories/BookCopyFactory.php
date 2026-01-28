@@ -14,9 +14,9 @@ class BookCopyFactory extends Factory
     {
         return [
             'book_id' => Book::factory(),
-            'barcode' => $this->faker->unique()->ean13,
-            'shelf_location' => 'A-' . $this->faker->numberBetween(1, 50),
-            'condition' => $this->faker->randomElement(['new', 'good', 'damaged']),
+            'barcode' => fake()->unique()->ean13(),
+            'shelf_location' => 'A-' .fake()->numberBetween(1, 50),
+            'condition' => fake()->randomElement(['new', 'good', 'damaged']),
             'status' => 'available',
         ];
     }

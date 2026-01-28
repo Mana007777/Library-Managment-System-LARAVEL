@@ -12,7 +12,7 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => ucfirst($this->faker->unique()->word),
+            'name' => ucfirst(fake()->unique()->word()),
             'parent_id' => null,
         ];
     }
